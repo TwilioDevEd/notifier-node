@@ -23,6 +23,7 @@
     "express"
   ],
   "dependencies": {
+    "bluebird": "^3.4.1",
     "body-parser": "~1.15.2",
     "cookie-parser": "~1.4.3",
     "debug": "~2.2.0",
@@ -37,6 +38,8 @@
     "chai": "^3.5.0",
     "jshint": "^2.9.2",
     "mocha": "^2.5.3",
+    "mockery": "^1.7.0",
+    "sinon": "^1.17.4",
     "supertest": "^1.2.0"
   }
 }
