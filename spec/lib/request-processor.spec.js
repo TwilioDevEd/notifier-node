@@ -12,7 +12,7 @@ describe('subscriber', function () {
 
     var responseMessage = ''
       , req = function (body) {
-                return { Body: body, From: '+1-415-555-5555' }
+                return { Body: body, From: '+1-415-555-5555' };
               };
 
     context('when message contains "help"', function () {
