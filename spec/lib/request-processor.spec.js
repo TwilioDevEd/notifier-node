@@ -2,33 +2,59 @@
 
 var expect = require('chai').expect
   , requestProcessor = require('../../lib/request-processor')
-  , sinon = require('sinon');
+  , sinon = require('sinon')
+  , cheerio = require('cheerio');
 
 describe('subscriber', function () {
   describe('#process', function () {
     var subscriber = require('../../lib/subscriber')
-      , createSpy = sinon.spy(subscriber, "create")
-      , responseMessage = '';
+      , createSpy = sinon.spy(subscriber, "create");
 
-    before(function (done) {
-      var req = {
-        body: { Body: 'Han Solo Spinoff', From: '+1-415-555-5555' }
-      };
+    var responseMessage = ''
+      , req = function (body) {
+                return { Body: body, From: '+1-415-555-5555' }
+              };
 
-      responseMessage = requestProcessor.process(req);
-      done();
+    context('when message contains "help"', function () {
+      before(function (done) {
+        responseMessage = requestProcessor.process(req('help'));
+        done();
+      });
+
+      it('responds with help message', function (done) {
+        var $ = cheerio.load(responseMessage);
+        expect($('Response Message').text()).to.contains('To subscribe');
+        done();
+      });
     });
 
-    it('creates a subscription', function(done) {
-      expect(
-        createSpy.calledWith('+1-415-555-5555', 'han_solo_spinoff')
-      ).to.be.true; // jshint ignore:line
-      done();
+    context ('when message contains the "movie name"', function () {
+      before(function (done) {
+        responseMessage =
+          requestProcessor.process(req('Han Solo Spinoff'));
+        done();
+      });
+
+      it('responds with subscription message', function (done) {
+        var $ = cheerio.load(responseMessage);
+        expect($('Response Message').text()).to.contains('You have been subscribed');
+        done();
+      });
     });
 
-    it('respons with a message', function(done) {
-      expect(responseMessage).to.contain('You have been subscribed');
-      done();
+    context ('when message contains "unsub movie name"', function () {
+      before(function (done) {
+        responseMessage =
+          requestProcessor.process(req('unsub Han Solo Spinoff'));
+        done();
+      });
+
+      it('responds with unsubscription message', function (done) {
+        var $ = cheerio.load(responseMessage);
+        expect($('Response Message').text()).to.contains(
+          'You have been unsubscribed');
+        done();
+      });
     });
   });
 });
