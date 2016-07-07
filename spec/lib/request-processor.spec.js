@@ -3,17 +3,31 @@
 var expect = require('chai').expect
   , requestProcessor = require('../../lib/request-processor')
   , sinon = require('sinon')
+  , mockery = require('mockery')
   , cheerio = require('cheerio');
 
-describe('subscriber', function () {
+describe('request-processor', function () {
   describe('#process', function () {
     var subscriber = require('../../lib/subscriber')
-      , createSpy = sinon.spy(subscriber, "create");
+      , createStub = sinon.stub(subscriber, "create");
 
     var responseMessage = ''
       , req = function (body) {
                 return { Body: body, From: '+1-415-555-5555' };
               };
+
+    before(function (done) {
+      mockery.enable();
+      mockery.warnOnUnregistered(false);
+      mockery.registerMock('subscriber', createStub);
+      done();
+    });
+
+    after(function (done) {
+      mockery.deregisterMock('subscriber');
+      mockery.disable();
+      done();
+    });
 
     context('when message contains "help"', function () {
       before(function (done) {
@@ -38,6 +52,13 @@ describe('subscriber', function () {
       it('responds with subscription message', function (done) {
         var $ = cheerio.load(responseMessage);
         expect($('Response Message').text()).to.contains('You have been subscribed');
+        done();
+      });
+
+      it('creates a subscription', function(done) {
+        expect(
+          createStub.calledWith('+1-415-555-5555', 'han_solo_spinoff')
+        ).to.be.true; // jshint ignore:line
         done();
       });
     });
