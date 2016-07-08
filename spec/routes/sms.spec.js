@@ -6,7 +6,7 @@ var expect = require('chai').expect
 
 describe('sms', function () {
   describe('POST /sms', function () {
-    var requestProcessor = require('../../lib/request-processor')
+    var requestProcessor = require('../../lib/request-processor');
     var processStub = 
       sinon.stub(requestProcessor, "process").returns('message');
 
@@ -18,8 +18,8 @@ describe('sms', function () {
         .post('/sms')
         .send(reqBody)
         .expect(function () {
-          expect(processStub.calledWith(reqBody)).to.be.true;
-          expect(processStub.calledOnce).to.be.true;
+          expect(processStub.calledWith(reqBody)).to.be.true; // jshint ignore:line
+          expect(processStub.calledOnce).to.be.true; // jshint ignore:line
         })
         .expect(200, done);
     });

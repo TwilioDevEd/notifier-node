@@ -59,7 +59,9 @@ describe('request-processor', function () {
       });
 
       it('creates a subscription', function(done) {
-        expect(createStub.calledWith('+1-415-555-5555', 'han_solo_spinoff')).to.be.true
+        expect(
+          createStub.calledWith('+1-415-555-5555', 'han_solo_spinoff')
+        ).to.be.true; // jshint ignore:line
         done();
       });
     });
