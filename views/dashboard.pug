@@ -1,0 +1,34 @@
+extends layout
+
+block content
+
+  h3.title STAR WARS UPDATES
+  p
+    i.fa.fa-check
+    | &nbsp;Ready to send updates!
+
+  .row
+    .col-md-12
+      form.form-horizontal
+        .form-group
+          label.col-md-2.control-label Message
+          .col-md-10
+            textarea.form-control
+
+        .form-group
+          label.col-md-2.control-label Tag
+          .col-md-10
+            select.form-control
+              option(value='episode_vii') Episode VIII
+              option(value='roge_one') Rogue One
+              option(value='han_solo_spinoff') Han Solo Spinoff
+
+        .form-group
+          .col-md-10.col-md-offset-2
+            a.btn.btn-danger(href='#')
+              i.fa.fa-close
+              | &nbsp;Reset
+            | &nbsp;
+            button.btn.btn-primary
+              i.fa.fa-envelope
+              | &nbsp;Send Notifications

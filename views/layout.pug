@@ -2,6 +2,29 @@ doctype html
 html
   head
     title= title
+    meta(content='width=device-width, initial-scale=1, user-scalable=no', name='viewport')
+
+    link(rel='stylesheet', href='//fonts.googleapis.com/css?family=Montserrat')
     link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='//maxcdn.bootstrapcdn.com/bootswatch/3.3.6/cyborg/bootstrap.min.css')
+    link(rel='stylesheet', href='//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css')
   body
-    block content
+    .navbar.navbar-default.navbar-fixed-top
+      .container
+        .navbar-header
+          a.navbar-brand(href='../')
+            i.fa.fa-paper-plane
+            | &nbsp; N O T I F Y
+          button.navbar-toggle(type='button', data-toggle='collapse', data-target='#navbar-main')
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+    .container
+      block content
+
+    footer.footer
+      p.text-muted
+        | Made with&nbsp;
+        i.fa.fa-heart
+        |  by your pals
+        a(href='http://www.twilio.com') &nbsp;@twilio

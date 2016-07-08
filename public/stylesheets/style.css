@@ -1,8 +1,31 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-family: 'Montserrat' !important;
+  padding-top: 22vh;
 }
 
-a {
-  color: #00B7FF;
+.title {
+  font-family: 'Montserrat';
+}
+
+p {
+  padding-bottom: 24px;
+}
+
+.navbar {
+  background-image: url(../images/notifier-header.jpg) !important;
+  background-size: cover;
+  background-repeat: no-repeat;
+  /*
+  min-height: calc(400px * (90/150));
+  */
+  height: 22vh;
+}
+
+.fa.fa-heart {
+  color: red;
+}
+
+footer p {
+  padding-top: 24px;
+  text-align: center;
 }
