@@ -4,10 +4,10 @@ var expect = require('chai').expect
   , sinon = require('sinon')
   , cheerio = require('cheerio');
 
-describe('sms', function () {
-  describe('POST /sms', function () {
+describe('message', function () {
+  describe('POST /message/incoming', function () {
     var requestProcessor = require('../../lib/request-processor');
-    var processStub = 
+    var processStub =
       sinon.stub(requestProcessor, "process").returns('message');
 
     it('calls request processor', function (done) {
@@ -15,7 +15,7 @@ describe('sms', function () {
       var reqBody = { Body: 'movie', From: '+1-415-555-5555' };
 
       agent
-        .post('/sms')
+        .post('/message/incoming')
         .send(reqBody)
         .expect(function () {
           expect(processStub.calledWith(reqBody)).to.be.true; // jshint ignore:line
