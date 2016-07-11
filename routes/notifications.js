@@ -4,7 +4,7 @@ var express = require('express')
 
 // GET: /notifications/new
 router.get('/new', function(req, res, next) {
-  res.render('dashboard', {});
+  res.render('notifications', {});
 });
 
 // POST: /notifications
