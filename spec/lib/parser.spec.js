@@ -5,9 +5,9 @@ var expect = require('chai').expect
 
 describe('parser', function () {
   describe('#parse', function () {
-    context('when the message contains "help"', function () {
+    context('when the message contains "help me"', function () {
       it('returns with "help" command', function() {
-        var result = parser.parse('help');
+        var result = parser.parse('help me');
         expect(result).to.have.property('command', 'help');
       });
     });

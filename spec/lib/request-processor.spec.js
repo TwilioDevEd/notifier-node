@@ -37,10 +37,10 @@ describe('request-processor', function () {
   });
 
   describe('#process', function () {
-    context('when message contains "help"', function () {
+    context('when message contains "help me"', function () {
       it('responds with help message', function (done) {
         responseMessage =
-          requestProcessor.process(requestBody('help'));
+          requestProcessor.process(requestBody('Help  me'));
 
         expect(responseMessage).to.contain('To subscribe');
         done();
@@ -50,7 +50,7 @@ describe('request-processor', function () {
     context ('when message contains the "movie name"', function () {
       before(function () {
         responseMessage =
-          requestProcessor.process(requestBody('Han Solo Spinoff'));
+          requestProcessor.process(requestBody('Han  Solo  Spinoff'));
       });
 
       it('responds with subscription message', function (done) {
