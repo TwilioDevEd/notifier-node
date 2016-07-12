@@ -1,10 +1,8 @@
 extends layout
 
 block content
-
   h3.title STAR WARS UPDATES
   p
-    i.fa.fa-check
     | &nbsp;Receive update, you must!
 
   .row
@@ -12,20 +10,20 @@ block content
       form.form-horizontal(action='/notifications', method='POST')
         .form-group
           label.col-md-2.control-label Message
-          .col-md-10
+          .col-md-10.text-right
             textarea.form-control(name='message')
 
         .form-group
           label.col-md-2.control-label Movie
           .col-md-10
             select.form-control(name='movie')
-              option(value='episode_vii') Episode VIII
+              option(value='episode_viii') Episode VIII
               option(value='rogue_one') Rogue One
               option(value='han_solo_spinoff') Han Solo Spinoff
 
         .form-group
           .col-md-10.col-md-offset-2
-            a.btn.btn-danger(href='#')
+            a.btn.btn-danger#reset(href='')
               i.fa.fa-close
               | &nbsp;Reset
             | &nbsp;

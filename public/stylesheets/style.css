@@ -8,16 +8,20 @@ body {
 }
 
 p {
-  padding-bottom: 24px;
+  padding-bottom: 20px;
+}
+
+.alert-success {
+  margin-top: 7px;
+  background-color: transparent !important;
+  border-color: #EEFCFE !important;
+  box-shadow: 0 0 10px #019CEE;
 }
 
 .navbar {
   background-image: url(../images/notifier-header.jpg) !important;
   background-size: cover;
   background-repeat: no-repeat;
-  /*
-  min-height: calc(400px * (90/150));
-  */
   height: 22vh;
 }
 

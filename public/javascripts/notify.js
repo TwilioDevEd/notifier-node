@@ -7,6 +7,7 @@ var Notify = {
     var self = this;
     $('#reset').click(function(e) {
       e.preventDefault();
+
       self.reset();
     });
   },
@@ -14,6 +15,7 @@ var Notify = {
   reset: function () {
     $('textarea[name=message]').val('');
     $('select[name=movie]').prop('selectedIndex', 0);
+    $('.alert').hide();
   }
 };
 

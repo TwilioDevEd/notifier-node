@@ -20,6 +20,11 @@ html
             span.icon-bar
             span.icon-bar
     .container
+      for data in flash
+        .alert.alert-dismissible.alert-success
+          button.close(type='button', data-dismiss='alert') ×
+          span= data.message
+
       block content
 
     footer.footer
@@ -29,5 +34,6 @@ html
         |  by your pals
         a(href='http://www.twilio.com') &nbsp;@twilio
 
-    script(src='//code.jquery.com/jquery-3.1.0.min.js')
+    script(src='//code.jquery.com/jquery-2.2.4.min.js')
+    script(src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js')
     script(src='/javascripts/notify.js')
