@@ -13,7 +13,7 @@ router.post('/', function(req, res, next) {
     , movie = req.body.movie;
 
   notification.create(movie, message);
-  res.send('');
+  res.redirect(302, '/notifications/new');
 });
 
 module.exports = router;

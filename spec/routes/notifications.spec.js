@@ -50,7 +50,7 @@ describe('dashboard', function () {
           expect(createStub.calledWith(params.movie, params.message)).to.be.true; // jshint ignore:line
           expect(createStub.calledOnce).to.be.true; // jshint ignore:line
         })
-        .expect(200, done);
+        .expect(302, done);
     });
   });
 });
