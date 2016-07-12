@@ -29,7 +29,7 @@ describe('dashboard', function () {
       var notificationMock = { create: createStub };
 
       mockery.registerMock('../lib/notification', notificationMock);
-      app = require('../../app.js')
+      app = require('../../app.js');
     });
 
     after(function(){
