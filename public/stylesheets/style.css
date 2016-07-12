@@ -14,8 +14,7 @@ p {
 .alert-success {
   margin-top: 7px;
   background-color: transparent !important;
-  border-color: #EEFCFE !important;
-  box-shadow: 0 0 10px #019CEE;
+  box-shadow: 0 0 10px #77b300;
 }
 
 .navbar {
