@@ -74,7 +74,7 @@ describe('request-processor', function () {
         done();
       });
 
-      it('creates a subscription', function(done) {
+      it('creates a subscription adding a movie', function(done) {
         expect(
           createStub.calledWith(
             '+1-415-555-5555', ['rogue_one', 'han_solo_spinoff'])
@@ -84,11 +84,21 @@ describe('request-processor', function () {
     });
 
     context ('when message contains "unsub movie name"', function () {
-      it('responds with unsubscription message', function (done) {
-        responseMessage =
-          requestProcessor.process(requestBody('unsub Han Solo Spinoff'));
+      before(function() {
+        responseMessage = requestProcessor.process(
+          requestBody('unsub rogue one'));
+      });
 
+      it('responds with unsubscription message', function (done) {
         expect(responseMessage).to.contain('You have been unsubscribed');
+        done();
+      });
+
+      it('creates a subscription removing a movie', function(done) {
+        expect(
+          createStub.calledWith(
+            '+1-415-555-5555', [])
+        ).to.be.true; // jshint ignore:line
         done();
       });
     });
