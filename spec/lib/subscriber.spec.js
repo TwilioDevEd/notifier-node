@@ -47,25 +47,35 @@ describe('subscriber', function () {
     mockery.disable();
   });
 
-  describe('#list', function() {
-    it('list notifications', function() {
-      return subscriber.list().then(function(bindings) {
-        expect(bindings[0]).to.deep.equal(
-          {
-            id: 'ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
-            phone: '+1-415-555-5555',
-            tags: ['rogue_one', 'han_solo_spinoff']
-          }
-        );
+  describe('#find', function() {
+    context('when the criteria matches with some subscriber', function () {
+      it('returns a subscriber', function() {
+        return subscriber.find('+1-415-555-5555').then(function(res) {
+          expect(res).to.deep.equal(
+            {
+              id: 'ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+              phoneNumber: '+1-415-555-5555',
+              tags: ['rogue_one', 'han_solo_spinoff']
+            }
+          );
 
-        expect(listStub.calledOnce).to.be.true; // jshint ignore:line
+          expect(listStub.calledOnce).to.be.true; // jshint ignore:line
+        });
+      });
+    });
+
+    context('when the criteria does not match with any subscriber', function () {
+      it('returns undefined', function() {
+        return subscriber.find('nonexistent-phone').then(function(res) {
+          expect(res).to.undefinded; // jshint ignore:line
+          expect(listStub.called).to.be.true; // jshint ignore:line
+        });
       });
     });
   });
 
   describe('#create', function () {
-    it('creates a subscriber', function(done) {
-
+    it('creates a subscriber', function() {
       subscriber.create('+1-415-555-5555', ['han_solo_spinoff']);
 
       expect(createStub.args[0][0]).to.deep.equal({
@@ -75,7 +85,6 @@ describe('subscriber', function () {
         address: '+1-415-555-5555',
         tag: ['han_solo_spinoff']
       });
-      done();
     });
   });
 });
