@@ -1,6 +1,7 @@
 'use strict';
 
 var expect = require('chai').expect
+  , Q = require('q')
   , sinon = require('sinon')
   , mockery = require('mockery')
   , cheerio = require('cheerio');
@@ -8,7 +9,8 @@ var expect = require('chai').expect
 describe('request-processor', function () {
   var requestProcessor
     , responseMessage
-    , createStub;
+    , createStub
+    , findStub;
 
   var requestBody = function (movieName) {
     return {
@@ -25,7 +27,21 @@ describe('request-processor', function () {
     });
 
     createStub = sinon.stub();
-    var subscriberMock = { create: createStub };
+    findStub = sinon.stub().returns(Q.resolve(
+      {
+        id: 'ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+        phoneNumber: '+1-415-555-5555',
+        movies: ['rogue_one']
+      }
+    ));
+    var subscriberMock = {
+      create: createStub,
+      find: sinon.stub().returns(Q.resolve({
+        id: 'ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+        phoneNumber: '+1-415-555-5555',
+        movies: ['rogue_one']
+      }))
+    };
 
     // replace the module `subscriber` with a mocked object
     mockery.registerMock('./subscriber', subscriberMock);
@@ -33,6 +49,7 @@ describe('request-processor', function () {
   });
 
   after(function(){
+    mockery.deregisterMock('./subscriber');
     mockery.disable();
   });
 
@@ -48,9 +65,8 @@ describe('request-processor', function () {
     });
 
     context ('when message contains the "movie name"', function () {
-      before(function () {
-        responseMessage =
-          requestProcessor.process(requestBody('Han  Solo  Spinoff'));
+      before(function() {
+        responseMessage = requestProcessor.process(requestBody('Han  Solo  Spinoff'));
       });
 
       it('responds with subscription message', function (done) {
@@ -60,7 +76,8 @@ describe('request-processor', function () {
 
       it('creates a subscription', function(done) {
         expect(
-          createStub.calledWith('+1-415-555-5555', 'han_solo_spinoff')
+          createStub.calledWith(
+            '+1-415-555-5555', ['rogue_one', 'han_solo_spinoff'])
         ).to.be.true; // jshint ignore:line
         done();
       });
