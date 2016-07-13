@@ -13,7 +13,15 @@ describe('notification', function () {
 
   var TwilioClientStub = sinon.stub();
   var createStub = sinon.stub().returns(Promise.resolve("for-create"));
-  var listStub = sinon.stub().returns(Promise.resolve("for-list"));
+  var listStub = sinon.stub().returns(Promise.resolve(
+    [
+      {
+        sid: 'ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+        address: '+1-415-555-5555',
+        tags: ['rogue_one', 'han_solo_spinoff']
+      }
+    ]
+  ));
 
   TwilioClientStub.prototype.notifications = {
     v1: {
@@ -60,11 +68,18 @@ describe('notification', function () {
   });
 
   describe('#list', function() {
-    it('list notifications', function(done) {
-      notification.list();
+    it('list notifications', function() {
+      return notification.list().then(function(bindings) {
+        expect(bindings[0]).to.deep.equal(
+          {
+            id: 'ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+            phone: '+1-415-555-5555',
+            tags: ['rogue_one', 'han_solo_spinoff']
+          }
+        );
 
-      expect(listStub.calledOnce).to.be.true; // jshint ignore:line
-      done();
+        expect(listStub.calledOnce).to.be.true; // jshint ignore:line
+      });
     });
   });
 });
