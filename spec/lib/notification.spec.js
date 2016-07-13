@@ -1,59 +1,38 @@
 'use strict';
 
 var expect = require('chai').expect
+  , Q = require('q')
   , notification = require('../../lib/notification')
   , sinon = require('sinon')
-  , mockery = require('mockery')
-  , Promise = require('bluebird');
+  , mockery = require('mockery');
 
 describe('notification', function () {
-  var twilioStub = function(accountSid, authToken) {
-    return new TwilioClientStub();
-  };
-
-  var TwilioClientStub = sinon.stub();
-  var createStub = sinon.stub().returns(Promise.resolve("for-create"));
-  var listStub = sinon.stub().returns(Promise.resolve(
-    [
-      {
-        sid: 'ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
-        address: '+1-415-555-5555',
-        tags: ['rogue_one', 'han_solo_spinoff']
-      }
-    ]
-  ));
-
-  TwilioClientStub.prototype.notifications = {
-    v1: {
-      services: function(_) {
-        return {
-          notifications: {
-            create: createStub,
-          },
-          bindings: {
-            list: listStub
+  var createStub = sinon.stub().returns(Q.resolve({}));
+  var twilioMock = function () {
+    return {
+      notifications: {
+        v1: {
+          services: function(_) {
+            return { notifications: { create: createStub } };
           }
-        };
+        }
       }
-    }
+    };
   };
 
-  before(function (done) {
+  before(function () {
     mockery.enable();
     mockery.warnOnUnregistered(false);
-    mockery.registerMock('twilio', twilioStub);
-    require('twilio');
-    done();
+    mockery.registerMock('twilio', twilioMock);
   });
 
-  after(function (done) {
+  after(function () {
     mockery.deregisterMock('twilio');
     mockery.disable();
-    done();
   });
 
   describe('#create', function () {
-    it('creates a notification', function(done) {
+    it('creates a notification', function() {
       notification.create(['han_solo_spinoff'], 'Han Solo Spinoff new release');
 
       expect(createStub.calledWith({
@@ -63,23 +42,6 @@ describe('notification', function () {
           from: 'my-twilio-number'
         })
       })).to.be.true; // jshint ignore:line
-      done();
-    });
-  });
-
-  describe('#list', function() {
-    it('list notifications', function() {
-      return notification.list().then(function(bindings) {
-        expect(bindings[0]).to.deep.equal(
-          {
-            id: 'ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
-            phone: '+1-415-555-5555',
-            tags: ['rogue_one', 'han_solo_spinoff']
-          }
-        );
-
-        expect(listStub.calledOnce).to.be.true; // jshint ignore:line
-      });
     });
   });
 });
