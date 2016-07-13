@@ -55,7 +55,7 @@ describe('subscriber', function () {
             {
               id: 'ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
               phoneNumber: '+1-415-555-5555',
-              tags: ['rogue_one', 'han_solo_spinoff']
+              movies: ['rogue_one', 'han_solo_spinoff']
             }
           );
 
