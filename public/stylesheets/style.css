@@ -5,6 +5,7 @@ body {
 
 .title {
   font-family: 'Montserrat';
+  font-weight: 600;
 }
 
 p {
@@ -22,6 +23,15 @@ p {
   background-size: cover;
   background-repeat: no-repeat;
   height: 22vh;
+}
+
+.spaced {
+  letter-spacing: 2px;
+}
+
+img {
+  margin-top: 24px;
+  margin-bottom: 10px;
 }
 
 .fa.fa-heart {
