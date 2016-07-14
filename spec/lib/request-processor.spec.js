@@ -55,12 +55,11 @@ describe('request-processor', function () {
 
   describe('#process', function () {
     context('when message contains "help me"', function () {
-      it('responds with help message', function (done) {
+      it('responds with help message', function () {
         responseMessage =
           requestProcessor.process(requestBody('Help  me'));
 
         expect(responseMessage).to.contain('To subscribe');
-        done();
       });
     });
 
@@ -69,17 +68,15 @@ describe('request-processor', function () {
         responseMessage = requestProcessor.process(requestBody('Han  Solo  Spinoff'));
       });
 
-      it('responds with subscription message', function (done) {
+      it('responds with subscription message', function () {
         expect(responseMessage).to.contain('You have been subscribed');
-        done();
       });
 
-      it('creates a subscription adding a movie', function(done) {
+      it('creates a subscription adding a movie', function() {
         expect(
           createStub.calledWith(
             '+1-415-555-5555', ['rogue_one', 'han_solo_spinoff'])
         ).to.be.true; // jshint ignore:line
-        done();
       });
     });
 
@@ -89,17 +86,24 @@ describe('request-processor', function () {
           requestBody('unsub rogue one'));
       });
 
-      it('responds with unsubscription message', function (done) {
+      it('responds with unsubscription message', function () {
         expect(responseMessage).to.contain('You have been unsubscribed');
-        done();
       });
 
-      it('creates a subscription removing a movie', function(done) {
+      it('creates a subscription removing a movie', function() {
         expect(
           createStub.calledWith(
             '+1-415-555-5555', [])
         ).to.be.true; // jshint ignore:line
-        done();
+      });
+    });
+
+    context ('when message contains "unsub movie name"', function () {
+      it('responds with unsubscription message', function () {
+        responseMessage = requestProcessor.process(
+          requestBody('unsub phantom menace'));
+
+        expect(responseMessage).to.contain('Unknown movie');
       });
     });
   });

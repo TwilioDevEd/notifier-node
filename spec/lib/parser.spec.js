@@ -43,5 +43,19 @@ describe('parser', function () {
         expect(result).to.have.property('tag', 'han_solo_spinoff');
       });
     });
+
+    context('when the message contains an invalid movie for subscription', function () {
+      it('returns with "invalid" command', function() {
+        var result = parser.parse('Phantom Menace');
+        expect(result).to.have.property('command', 'invalid');
+      });
+    });
+
+    context('when the message contains an invalid movie for unsubscription', function () {
+      it('returns with "invalid" command', function() {
+        var result = parser.parse('unsub Phantom Menace');
+        expect(result).to.have.property('command', 'invalid');
+      });
+    });
   });
 });

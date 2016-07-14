@@ -33,5 +33,14 @@ describe('message-creator', function () {
         expect($('Response Message').text()).to.contain('You have been unsubscribed');
       });
     });
+
+    context('when options contains the command "invalid"', function () {
+      it('responds with suggestions', function () {
+        var response = messageCreator.create({ command: 'invalid', tag: '' });
+        var $ = cheerio.load(response);
+
+        expect($('Response Message').text()).to.contain('Unknown movie');
+      });
+    });
   });
 });
