@@ -4,17 +4,33 @@ $(document).ready(function () {
 
 var Notify = {
   init: function () {
-    var self = this;
-    $('#reset').click(function(e) {
+    $('#reset').click($.proxy(function(e) {
       e.preventDefault();
 
-      self.reset();
-    });
+      this.reset();
+    }, this));
+
+    $('form').submit($.proxy(function(e) {
+      if (this.isEmptyMessage()) {
+        e.preventDefault();
+
+        this.displayError();
+      }
+    }, this));
+  },
+
+  displayError: function() {
+    $('#validation_message').html("An empty message, send you can't");
+  },
+
+  isEmptyMessage: function() {
+    return $('textarea[name=message]').val() === '';
   },
 
   reset: function () {
     $('textarea[name=message]').val('');
     $('select[name=movie]').prop('selectedIndex', 0);
+    $('#validation_message').text('');
     $('.alert').hide();
   }
 };

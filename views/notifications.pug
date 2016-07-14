@@ -11,8 +11,9 @@ block content
       form.form-horizontal(action='/notifications', method='POST')
         .form-group
           label.col-md-2.control-label Message
-          .col-md-10.text-right
+          .col-md-10
             textarea.form-control(name='message')
+            span.text-primary#validation_message
 
         .form-group
           label.col-md-2.control-label Movie
