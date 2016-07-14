@@ -14,7 +14,7 @@ router.post('/', function(req, res, next) {
 
   notification.create(movie, message);
 
-  req.flash('success', 'Well done! The force is strong in you.');
+  req.flash('success', 'Well done! The force is strong with you.');
   res.redirect(302, '/notifications/new');
 });
 
