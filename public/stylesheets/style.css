@@ -1,8 +1,44 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-family: 'Montserrat' !important;
+  padding-top: 22vh;
 }
 
-a {
-  color: #00B7FF;
+.title {
+  font-family: 'Montserrat';
+  font-weight: 600;
+}
+
+p {
+  padding-bottom: 20px;
+}
+
+.alert-success {
+  margin-top: 7px;
+  background-color: transparent !important;
+  box-shadow: 0 0 10px #77b300;
+}
+
+.navbar {
+  background-image: url(../images/notifier-header.jpg) !important;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 22vh;
+}
+
+.spaced {
+  letter-spacing: 2px;
+}
+
+img {
+  margin-top: 24px;
+  margin-bottom: 10px;
+}
+
+.fa.fa-heart {
+  color: red;
+}
+
+footer p {
+  padding-top: 24px;
+  text-align: center;
 }

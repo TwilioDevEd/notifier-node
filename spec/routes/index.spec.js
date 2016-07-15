@@ -2,13 +2,15 @@ var expect = require('chai').expect
   , supertest = require('supertest')
   , app = require('../../app.js');
 
-describe('index', function () {
+describe('dashboard', function () {
   describe('GET /', function () {
-    it('responds with ok', function (done) {
+    it('responds with redirect', function (done) {
       var agent = supertest(app);
       agent
         .get('/')
-        .expect(200, done);
+        .expect(302)
+        .expect('Location', '/notifications/new')
+        .end(done);
     });
   });
 });
