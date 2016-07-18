@@ -6,6 +6,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var config = require('./config');
 var session = require('express-session');
 
 var routes = require('./routes/index');
@@ -25,7 +26,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(session({
-  secret: 'zqJNJxQoyIQaAN0dGtqi',
+  secret: config.secret,
   cookie: { maxAge: 60000 },
   resave: true,
   saveUninitialized: true
