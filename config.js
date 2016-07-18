@@ -9,7 +9,7 @@ var config = {
   authToken: process.env.TWILIO_AUTH_TOKEN,
   phoneNumber: process.env.TWILIO_NUMBER,
   notificationServiceSid: process.env.TWILIO_NOTIFICATION_SERVICE_SID
-}
+};
 
 var isUnconfigured = _.every(_.values(config), function(value) {
   return _.isUndefined(value);
