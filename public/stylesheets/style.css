@@ -12,6 +12,14 @@ p {
   padding-bottom: 20px;
 }
 
+.fa {
+  margin-right: 4px;
+}
+
+#reset {
+  margin-right: 4px;
+}
+
 .alert-success {
   margin-top: 7px;
   background-color: transparent !important;
