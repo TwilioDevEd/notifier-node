@@ -12,7 +12,7 @@ describe('message-creator', function () {
         var response = messageCreator.create({ command: 'help', tag: '' });
         var $ = cheerio.load(response);
 
-        expect($('Response Message').text()).to.contain('To subscribe send "movie name"');
+        expect($('Response Message').text()).to.contain('To subscribe send the "movie name"');
       });
     });
 
