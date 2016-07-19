@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "test": "NODE_ENV=test TWILIO_ACCOUNT_SID=my-twilio-account-sid TWILIO_AUTH_TOKEN=my-twilio-auth-token TWILIO_NUMBER=my-twilio-number TWILIO_NOTIFICATION_SERVICE_SID=my-twilio-notification-service-sid node_modules/mocha/bin/mocha spec --recursive",
+    "test": "NODE_ENV=test APP_SECRET=keyboard-cat TWILIO_ACCOUNT_SID=my-twilio-account-sid TWILIO_AUTH_TOKEN=my-twilio-auth-token TWILIO_NUMBER=my-twilio-number TWILIO_NOTIFICATION_SERVICE_SID=my-twilio-notification-service-sid node_modules/mocha/bin/mocha spec --recursive",
     "jshint": "node_modules/jshint/bin/jshint ."
   },
   "description": "Notifier with Node.js/Express and Twilio",
@@ -23,7 +23,6 @@
     "express"
   ],
   "dependencies": {
-    "bluebird": "^3.4.1",
     "body-parser": "~1.15.2",
     "cookie-parser": "~1.4.3",
     "debug": "~2.2.0",
