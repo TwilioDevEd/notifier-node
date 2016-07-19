@@ -11,7 +11,7 @@ that matches the specified tags.
 
 ## Local Development
 
-This project is build using [Express](http://expressjs.com/) web framework and depends on [MongoDB](https://www.mongodb.com).
+This project is build using [Express](http://expressjs.com/) web framework.
 
 1. First clone this repository and `cd` into it.
 
