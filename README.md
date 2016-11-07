@@ -20,15 +20,15 @@ This project is build using [Express](http://expressjs.com/) web framework.
    $ cd notifier-node
    ```
 
-1. Copy the sample configuration file and edit it to match your configuration.
+1. Install dependencies.
 
-   ```bash
-   $ cp .env.example .env
+   ```
+   $ npm install
    ```
 
-   You can find your `TWILIO_ACCOUNT_SID` and `TWILIO_AUTH_TOKEN` in your
-   [Twilio Account Settings](https://www.twilio.com/user/account/settings).
-   You will also need a `TWILIO_NUMBER`, which you may find [here](https://www.twilio.com/user/account/phone-numbers/incoming).
+1. Copy the `.env.example` file to `.env`, and edit it including your credentials
+   for the Twilio API (found at https://www.twilio.com/console).
+   You will also need a [Twilio Number](https://www.twilio.com/console/phone-numbers/incoming).
 
    You can find your `TWILIO_NOTIFICATION_SERVICE_SID` in your Twilio console under
    [services](https://www.twilio.com/console/notify/services).
