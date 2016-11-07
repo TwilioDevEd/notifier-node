@@ -30,7 +30,7 @@ This project is build using [Express](http://expressjs.com/) web framework.
    [Twilio Account Settings](https://www.twilio.com/user/account/settings).
    You will also need a `TWILIO_NUMBER`, which you may find [here](https://www.twilio.com/user/account/phone-numbers/incoming).
 
-   You can find your `TWILIO_NOTIFICATION_SERVICE_SID` in you console under
+   You can find your `TWILIO_NOTIFICATION_SERVICE_SID` in your Twilio console under
    [services](https://www.twilio.com/console/notify/services).
 
    Run `source .env` to export the environment variables.
@@ -63,7 +63,7 @@ This project is build using [Express](http://expressjs.com/) web framework.
 
 #### To Create a Subscription
 
-1. Text your Twilio number the name of the movie you to be subscribed. e.g.
+1. Text your Twilio number the name of the tag that you want to subscribe to. e.g.
 
    ```
    Rogue One
@@ -75,7 +75,7 @@ This project is build using [Express](http://expressjs.com/) web framework.
 
 #### To Delete a Subscription
 
-1. Text your Twilio number with "usub movie name". e.g.
+1. Text your Twilio number with "unsub tag". e.g.
 
    ```
    unsub Rogue One
