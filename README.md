@@ -69,7 +69,7 @@ This project is build using [Express](http://expressjs.com/) web framework.
    Rogue One
    ```
 
-   **Note**: The available movies are "Han Solo Spinoff", "Rogue One", and "Episode VII".
+   **Note**: The available movies are "Han Solo Spinoff", "Rogue One", and "Episode VIII".
 
 1. Receive a confirmation message.
 
