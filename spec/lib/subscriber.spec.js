@@ -22,7 +22,7 @@ describe('subscriber', function () {
 
     var twilioMock = function () {
       return {
-        notifications: {
+        notify: {
           v1: {
             services: function(_) {
               return {
@@ -97,7 +97,7 @@ describe('subscriber', function () {
 
     var twilioMock = function () {
       return {
-        notifications: {
+        notify: {
           v1: {
             services: function(_) {
               return { bindings: bindingsStub };
