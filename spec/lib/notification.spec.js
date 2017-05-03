@@ -10,10 +10,12 @@ describe('notification', function () {
   var createStub = sinon.stub().returns(Q.resolve({}));
   var twilioMock = function () {
     return {
-      notifications: {
+      notify: {
         v1: {
           services: function(_) {
-            return { notifications: { create: createStub } };
+            return {
+              notifications: { create: createStub },
+            };
           }
         }
       }

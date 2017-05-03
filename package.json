@@ -2,6 +2,9 @@
   "name": "notifier-node",
   "version": "0.0.1",
   "private": true,
+  "engines": {
+    "node": ">=6.10.2"
+  },
   "scripts": {
     "start": "node ./bin/www",
     "test": "NODE_ENV=test APP_SECRET=keyboard-cat TWILIO_ACCOUNT_SID=my-twilio-account-sid TWILIO_AUTH_TOKEN=my-twilio-auth-token TWILIO_NUMBER=my-twilio-number TWILIO_NOTIFICATION_SERVICE_SID=my-twilio-notification-service-sid node_modules/mocha/bin/mocha spec --recursive",
@@ -23,28 +26,28 @@
     "express"
   ],
   "dependencies": {
-    "body-parser": "~1.15.2",
+    "body-parser": "~1.17.1",
     "cookie-parser": "~1.4.3",
-    "debug": "~2.2.0",
-    "dotenv": "^2.0.0",
-    "express": "~4.14.0",
+    "debug": "~2.6.4",
+    "dotenv": "^4.0.0",
+    "express": "~4.15.2",
     "express-session": "^1.14.0",
     "flash": "^1.1.0",
-    "morgan": "~1.7.0",
-    "npm": "^3.10.5",
+    "morgan": "~1.8.1",
+    "npm": "^4.5.0",
     "pug": "^2.0.0-beta3",
     "q": "^1.4.1",
-    "serve-favicon": "~2.3.0",
-    "twilio": "^3.0.0-rc.5"
+    "serve-favicon": "~2.4.2",
+    "twilio": "~3.0.0-rc.16"
   },
   "devDependencies": {
     "chai": "^3.5.0",
-    "cheerio": "^0.20.0",
+    "cheerio": "^0.22.0",
     "jshint": "^2.9.2",
-    "mocha": "^2.5.3",
-    "mockery": "^1.7.0",
-    "sinon": "^1.17.4",
-    "supertest": "^1.2.0",
+    "mocha": "^3.3.0",
+    "mockery": "^2.0.0",
+    "sinon": "^2.1.0",
+    "supertest": "^3.0.0",
     "underscore": "^1.8.3"
   }
 }
