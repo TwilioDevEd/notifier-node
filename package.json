@@ -30,7 +30,7 @@
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.4",
     "dotenv": "^4.0.0",
-    "express": "~4.15.2",
+    "express": "~4.17.1",
     "express-session": "^1.14.0",
     "flash": "^1.1.0",
     "morgan": "~1.8.1",
