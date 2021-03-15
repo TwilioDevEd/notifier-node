@@ -41,7 +41,7 @@
     "twilio": "~3.0.0-rc.16"
   },
   "devDependencies": {
-    "chai": "^3.5.0",
+    "chai": "^4.3.4",
     "cheerio": "^0.22.0",
     "jshint": "^2.9.2",
     "mocha": "^3.3.0",
