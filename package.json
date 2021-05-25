@@ -46,7 +46,7 @@
     "jshint": "^2.9.2",
     "mocha": "^3.3.0",
     "mockery": "^2.0.0",
-    "sinon": "^2.1.0",
+    "sinon": "^11.0.0",
     "supertest": "^3.0.0",
     "underscore": "^1.8.3"
   }
