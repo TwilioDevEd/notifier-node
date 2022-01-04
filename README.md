@@ -2,9 +2,11 @@
   <img src="https://static0.twilio.com/marketing/bundles/marketing/img/logos/wordmark-red.svg" alt="Twilio" width="250" />
 </a>
 
-# Notifier and SMS Notifications with Twilio Notify
+# Archived - Notifier and SMS Notifications with Twilio Notify
 
-[![Build Status](https://travis-ci.org/TwilioDevEd/notifier-node.svg?branch=master)](https://travis-ci.org/TwilioDevEd/notifier-node)
+Please see the docs for [Twilio Notify](https://www.twilio.com/docs/notify) to try out notifications.
+
+## Description
 
 Tag users and send group notifications with one request. Twilio alerts everyone
 that matches the specified tags.
